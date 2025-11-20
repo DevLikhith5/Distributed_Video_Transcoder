@@ -1,0 +1,5 @@
+-- AlterEnum
+ALTER TYPE "STATUS" ADD VALUE 'IN_LAMBDA';
+
+-- AlterTable
+ALTER TABLE "video" ADD COLUMN     "currRetries" INTEGER NOT NULL DEFAULT 0;

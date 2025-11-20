@@ -1,0 +1,62 @@
+export class AppError extends Error {
+    constructor(
+      public message: string,
+      public statusCode: number = 500,
+      public details?: unknown
+    ) {
+      super(message);
+      this.name = new.target.name;
+    }
+}
+
+export class ValidationError extends AppError {
+    constructor(message = "Validation failed", details?: unknown) {
+      super(message, 400, details);
+    }
+  }
+
+  export class AuthError extends AppError {
+    constructor(message = "Unauthorized") {
+      super(message, 401);
+    }
+}
+
+
+export class ForbiddenError extends AppError {
+    constructor(message = "Forbidden") {
+      super(message, 403);
+    }
+}
+
+export class NotFoundError extends AppError {
+    constructor(message = "Resource not found") {
+      super(message, 404);
+    }
+}
+
+export class ConflictError extends AppError {
+    constructor(message = "Conflict") {
+      super(message, 409);
+    }
+  }
+  
+
+  export class UnprocessableEntityError extends AppError {
+    constructor(message = "Unprocessable entity") {
+      super(message, 422);
+    }
+  }
+  
+
+  export class DatabaseError extends AppError {
+    constructor(message = "Database error", details?: unknown) {
+      super(message, 500, details);
+    }
+  }
+  
+
+  export class ExternalServiceError extends AppError {
+    constructor(message = "External service error", statusCode = 502, details?: unknown) {
+      super(message, statusCode, details);
+    }
+  }
